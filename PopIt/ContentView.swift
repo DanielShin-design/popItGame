@@ -18,15 +18,24 @@ struct ContentView: View {
     
     var body: some View {
         
-        VStack{
-            PopItButton(popColor: $colorRed)
-            PopItButton(popColor: $colorOrange)
-            PopItButton(popColor: $colorYellow)
-            PopItButton(popColor: $colorGreen)
-            PopItButton(popColor: $colorBlue)
-            PopItButton(popColor: $colorPurple)
-             
+        ZStack{
+        Image("freeBG001")
+            VStack{
+                /*
+                PopItButton(popColor: $colorRed)
+                PopItButton(popColor: $colorOrange)
+                PopItButton(popColor: $colorYellow)
+                PopItButton(popColor: $colorGreen)
+                PopItButton(popColor: $colorBlue)
+                PopItButton(popColor: $colorPurple)
+                 */
+                
+                
+            }
+            
         }
+        
+        
 
     }
 }
@@ -38,22 +47,29 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-struct PopItButton: View {
+struct aButton: View {
     
     @State var upAndDown = true
+        
+    var body: some View {
+        
+        Image(upAndDown ? "popUp" : "popDown")
+            .resizable()
+            .frame(width: 70, height: 70, alignment: .center)
+            .onTapGesture {
+                upAndDown.toggle()
+            }
+    }
+}
+
+struct PopItButton: View {
     @Binding var popColor: Color
     
     var body: some View {
         HStack{
             ForEach (1..<5) { index in
-                Button(action: {
-                    upAndDown.toggle()
-                }, label: {
-                    Image(upAndDown ? "popUp" : "popDown")
-                        .resizable()
-                        .frame(width: 70, height: 70, alignment: .center)
-                        .colorMultiply(popColor)
-                })
+                aButton()
+                    .colorMultiply(popColor)
             }
         }
     }
