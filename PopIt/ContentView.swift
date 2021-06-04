@@ -19,18 +19,25 @@ struct ContentView: View {
     var body: some View {
         
         ZStack{
-        Image("freeBG001")
+        Image("rainbow")
+            .resizable()
+            .edgesIgnoringSafeArea(.all)
+            
             VStack{
-                /*
+                
                 PopItButton(popColor: $colorRed)
                 PopItButton(popColor: $colorOrange)
                 PopItButton(popColor: $colorYellow)
                 PopItButton(popColor: $colorGreen)
                 PopItButton(popColor: $colorBlue)
                 PopItButton(popColor: $colorPurple)
+                
+                /*
+                ForEach (1..<7) { index in
+                PopItButton()
+                    .blendMode(.multiply)
+                }
                  */
-                
-                
             }
             
         }
